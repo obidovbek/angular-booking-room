@@ -1,0 +1,32 @@
+<mat-dialog-content *ngIf="person">
+  <app-admin-group>
+    <app-admin-label automation-id="admin-person-name-label">ФИО</app-admin-label>
+    <app-admin-value automation-id="admin-person-name-value">{{ person | personFullName }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label automation-id="admin-person-phone-label">Телефон</app-admin-label>
+    <app-admin-value automation-id="admin-person-phone-value">{{ person.phone }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label automation-id="admin-person-avatar-label">Аватар</app-admin-label>
+    <app-admin-value>
+      <img automation-id="admin-person-avatar-value" [src]="person.avatar" width="100px" alt="" />
+    </app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label automation-id="admin-person-buildings-label">Отели</app-admin-label>
+    <app-admin-value>
+      <nav *ngIf="person.buildingsExtended.length">
+        <ng-container *ngFor="let building of person.buildingsExtended">
+          <app-admin-building-link automation-id="admin-person-buildings-value" [building]="building"></app-admin-building-link>
+          {{ building.name }}
+        </ng-container>
+      </nav>
+
+      <p *ngIf="!person.buildingsExtended.length">Нет отелей</p>
+    </app-admin-value>
+  </app-admin-group>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button automation-id="admin-person-close" mat-raised-button mat-dialog-close>Закрыть</button>
+</mat-dialog-actions>

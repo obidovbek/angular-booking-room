@@ -1,0 +1,7 @@
+<mat-dialog-content>
+  <app-admin-room-form automation-id="admin-room-form" [form]="form"></app-admin-room-form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button automation-id="admin-room-cancel" mat-raised-button mat-dialog-close>Отмена</button>
+  <button automation-id="admin-room-add" mat-raised-button color="primary" (click)="onSubmit()">Добавить</button>
+</mat-dialog-actions>
